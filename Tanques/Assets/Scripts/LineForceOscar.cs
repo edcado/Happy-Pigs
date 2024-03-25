@@ -6,8 +6,8 @@ public class LineForceOscar : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private float stopVelocity = .05f;
-    [SerializeField] private float shootPower;
-    [SerializeField] private float jumpForce;
+    [SerializeField] public float shootPower;
+    [SerializeField] public float jumpForce;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private int maxPoints = 20;
 
