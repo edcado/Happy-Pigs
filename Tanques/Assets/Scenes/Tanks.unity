@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 1266314381}
   - component: {fileID: 1266314386}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: GolfBall
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
