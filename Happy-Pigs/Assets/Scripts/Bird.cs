@@ -11,6 +11,15 @@ public class Bird: MonoBehaviour
     public float force;
     public float maxDistance;
     public float explosionForce, explosionRadious;
+    public enum ForceType
+    {
+        AddForce,
+        AddForceAtPosition,
+        AddRelativeForce,
+        AddExplosionForce
+    }
+
+    public ForceType forceType;
     void Start()
     {
         mainCamera = Camera.main;
@@ -37,7 +46,24 @@ public class Bird: MonoBehaviour
     }
     private void OnMouseUp()
     {
-        ThrowAddForce();
+        switch (forceType)
+        {
+            case ForceType.AddForce:
+                ThrowAddForce();
+                break;
+            case ForceType.AddForceAtPosition:
+                ThrowAddForceAtPosition();
+                break;
+            case ForceType.AddRelativeForce:
+                ThrowAddRelativeForce();
+                break;
+            case ForceType.AddExplosionForce:
+                ThrowAddExplosionForce();
+                break;
+            default:
+                Debug.LogWarning("Unknown force type selected");
+                break;
+        }
     }
 
     private void ThrowAddForce()
@@ -64,6 +90,23 @@ public class Bird: MonoBehaviour
         Vector3 throwVector = startPosition - clampedPosition;
         rb.AddExplosionForce(explosionForce,this.transform.position,explosionRadious);
     }
+
+
+
+
+    public void ButtonAddForce()
+    {
+        forceType = ForceType.AddForce;
+    }
+    public void ButtonAddForceAtPosition()
+    {
+        forceType = ForceType.AddForceAtPosition;
+    }
+    public void ButtonAddForceRelativeForce()
+    {
+        forceType = ForceType.AddRelativeForce;
+    }
+
 
     void Update()
     {
